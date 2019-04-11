@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import kotlinx.android.synthetic.main.fragment_quote.*
 
 
 /**
@@ -18,7 +18,16 @@ class QuoteFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_quote, container, false)
+        var view = inflater.inflate(R.layout.fragment_quote, container, false)
+
+        var quote = arguments?.get("quote").toString()
+        var author = arguments?.get("author").toString()
+
+        quoteTextView.text = quote
+        quoteAuthor.text = author
+
+        quoteCardView.setBackgroundResource(R.color.yellow_400)
+        return view
     }
 
     fun newInstance(quote: String, author: String): QuoteFragment {
