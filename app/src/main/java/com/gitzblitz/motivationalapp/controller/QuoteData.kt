@@ -13,7 +13,7 @@ import org.json.JSONException
  * Created by george.ngethe on 28/03/2018.
  */
 class QuoteData {
-    lateinit var quoteArrayList: ArrayList<Quote>
+    var quoteArrayList: ArrayList<Quote> = arrayListOf()
 
     fun getQuotes(callback: QuoteListAsyncResponse): Unit {
         val url = "https://raw.githubusercontent.com/pdichone/UIUX-Android-Course/master/Quotes.json%20"
@@ -22,13 +22,10 @@ class QuoteData {
             try {
 
                 for (i in 0 until response.length()) {
-                    var quoteObject = response.getJSONObject(i)
-                    var quote = Quote(quoteObject.getString("quote"), quoteObject.getString("name"))
-//                  Log.d("Quotes:", quote.author)
+                    val quoteObject = response.getJSONObject(i)
+                    val quote = Quote(quoteObject.getString("quote"), quoteObject.getString("name"))
                     quoteArrayList.add(quote)
-
                 }
-
 
             } catch (e: JSONException) {
                 e.printStackTrace()
