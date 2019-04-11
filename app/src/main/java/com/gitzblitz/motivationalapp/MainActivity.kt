@@ -22,26 +22,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun getInfo(url: String) {
-        val quoteRequest = JsonArrayRequest(Request.Method.GET, url, Response.Listener { response: JSONArray ->
-            try {
-
-                for (i in 0 until response.length()) {
-                    var quoteObject = response.getJSONObject(i)
-                    var quote = Quote(quoteObject.getString("quote"), quoteObject.getString("name"))
-
-                                    Log.d("Quotes:", quote.author)
-
-                }
-            } catch (e: JSONException) {
-                e.printStackTrace()
-            }
-        }, Response.ErrorListener { error: VolleyError ->
-            try {
-                Log.d("Error", "Not Working")
-            } catch (e: JSONException) {
-                e.printStackTrace()
-            }
-        })
-        AppController.instance?.addToRequestQueue(quoteRequest)
+//        val quoteRequest = JsonArrayRequest(Request.Method.GET, url, Response.Listener { response: JSONArray ->
+//            try {
+//
+//                for (i in 0 until response.length()) {
+//                    var quoteObject = response.getJSONObject(i)
+//                    var quote = Quote(quoteObject.getString("quote"), quoteObject.getString("name"))
+//
+//                                    Log.d("Quotes:", quote.author)
+//
+//                }
+//            } catch (e: JSONException) {
+//                e.printStackTrace()
+//            }
+//        }, Response.ErrorListener { error: VolleyError ->
+//            try {
+//                Log.d("Error", "Not Working")
+//            } catch (e: JSONException) {
+//                e.printStackTrace()
+//            }
+//        })
+//        AppController.instance?.addToRequestQueue(quoteRequest)
     }
 }
