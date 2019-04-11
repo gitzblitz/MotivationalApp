@@ -23,6 +23,8 @@ android:
   - extra-google-m2repository
 script:
 - "./gradlew clean assembleDebug"
+before_install:
+- yes | sdkmanager "build-tools;28.0.0"
 before_cache:
 - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
 - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
