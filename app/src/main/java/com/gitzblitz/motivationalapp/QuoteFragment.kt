@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import java.util.concurrent.ThreadLocalRandom
 
 
 /**
@@ -30,8 +31,20 @@ class QuoteFragment : Fragment() {
         quoteText.text = quote
         authorText.text = author
 
-        quoteCardView.setBackgroundResource(R.color.light_blue_900)
+        val colors = intArrayOf(R.color.blue_500, R.color.red_500, R.color.green_500, R.color.cyan_500, R.color.pink_500, R.color.teal_500, R.color.amber_500, R.color.deep_orange_500)
+        quoteCardView.setBackgroundResource(getRandomColor(colors))
         return view
+    }
+
+
+    internal fun getRandomColor(colors: IntArray):Int {
+        var color: Int
+        val quotesArrayLength = colors.size
+
+        val randomNum = ThreadLocalRandom.current().nextInt(quotesArrayLength)
+        color = colors[randomNum]
+
+        return color
     }
 
     companion object {
